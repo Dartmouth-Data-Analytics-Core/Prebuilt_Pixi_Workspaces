@@ -1,0 +1,49 @@
+[workspace]
+authors = ["mikemartinez99 <f007qps@dartmouth.edu>"]
+channels = ["conda-forge", "bioconda"]
+name = "singleCell"
+platforms = ["osx-arm64"]
+version = "0.1.0"
+
+[tasks]
+
+#== Install Monocle3
+install-monocle3 = """
+Rscript -e '
+devtools::install_github('cole-trapnell-lab/monocle3')
+'
+"""
+
+#== Install scplotter
+install-scplotter = """
+Rscript -e '
+devtools::install_github("pwwang/scplotter")
+'
+"""
+
+[dependencies]
+
+#== R Single-Cell Packages
+r-base = ">=4.3"
+r-devtools = "*"
+r-remotes = "*"
+r-seurat = ">=5.4.0"
+r-seuratobject = ">=5.3.0"
+bioconductor-scater = ">=1.34.1"
+bioconductor-scran = "*"
+bioconductor-singlecellexperiment = ">=1.28.0"
+bioconductor-scdblfinder = ">=1.23.4"
+r-seurat-disk = "*"
+r-soupx = ">=1.6.2"
+r-fnn = ">=1.1.4.1"
+r-cluster = ">=2.1.8.1"
+r-reshape2 = ">=1.4.5"
+r-dplyr = ">=1.1.4"
+r-openxlsx = ">=4.2.8.1"
+r-harmony = "*"
+r-ggplot2 = "*"
+r-patchwork = "*"
+r-ggalluvial = "*"
+r-viridis = "*"
+r-rcolorbrewer = "*"
+r-ggrepel = "*"
