@@ -1,0 +1,53 @@
+[workspace]
+authors = ["Mike Martinez <mike.j.martinez99@gmail.com>"]
+channels = ["conda-forge", "bioconda"]
+name = "envs"
+platforms = ["osx-arm64","linux-64"]
+version = "0.1.0"
+
+[tasks]
+
+#----- Run RStudio project
+#rstudio = "open -n -a Rstudio /Volumes/GMBSR_bioinfo/Labs/leach/260521-Bulk-ATAC/downstream_analysis/downstream_analysis.Rproj"
+
+#----- Install github packages
+install-git = """
+Rscript -e '
+devtools::install_github("jokergoo/ComplexHeatmap")
+devtools::install_github("mikemartinez99/RGenEDA")
+'
+"""
+
+# Only run is install post scripts is not set to insecure locally or globally
+#fix-bioc-data = "PREFIX=$CONDA_PREFIX bash $CONDA_PREFIX/bin/.bioconductor-genomeinfodbdata-post-link.sh"
+
+[dependencies]
+r-base = "4.4.3"
+r-sessioninfo = "*"
+r-remotes = "*"
+r-devtools = "*"
+r-tidyverse = "*"
+r-dplyr = "*"
+r-tidyr = "*"
+r-readr = "*"
+r-stringr = "*"
+"r-data.table" = "*"
+r-pheatmap = "*"
+r-ggplot2 = "*"
+r-ggpubr = "*"
+r-ggrepel = "*"
+r-RColorBrewer = "*"
+r-ggh4x = "*"
+r-circlize = "*"
+bioconductor-rtracklayer = "*"
+"bioconductor-txdb.hsapiens.ucsc.hg38.knowngene" ="*"
+bioconductor-qsmooth = "*"
+bioconductor-edger = "*"
+bioconductor-bsgenome = "*"
+bioconductor-rsamtools = "*"
+"bioconductor-org.hs.eg.db" = "*"
+bioconductor-genomicranges = "*"
+bioconductor-chipseeker = "*"
+bioconductor-genomeinfodb = ">=1.42.0,<2"
+bioconductor-genomeinfodbdata = ">=1.2.13,<2"
+deeptools = "*"
