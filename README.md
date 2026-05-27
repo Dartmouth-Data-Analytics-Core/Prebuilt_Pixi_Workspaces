@@ -20,4 +20,8 @@ This repository contains **prebuilt Pixi workspaces** for common genomic and sin
   - Visualization: `ggplot2`, `patchwork`, `ggalluvial`, `viridis`, `RColorBrewer`, `ggrepel`
   - Data manipulation: `dplyr`, `reshape2`, `Matrix`
   - **Monocle3**: Trajectory inference for single-cell RNA-seq  
-  - **scplotter**: Visualization utilities for single-cell data  
+  - **scplotter**: Visualization utilities for single-cell data
+ 
+### [Bulk ATAC Seq Downstream Analysis](Bulk-ATAC-Seq/hg38)
+
+Downstream analysis of bulk ATAC-Seq data in R and DeepTools (currently only for hg38)
