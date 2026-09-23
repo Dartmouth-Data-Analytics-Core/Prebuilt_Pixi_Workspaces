@@ -1,10 +1,13 @@
 # GDSC Prebuilt Pixi Workspaces
 
-![Status](https://img.shields.io/badge/status-in%20progress-yellow)
-
 Prebuilt [Pixi](https://pixi.sh) workspaces for common genomics and single-cell analyses. Each workspace has a `pixi.toml` (the packages we ask for) and a `pixi.lock` (the exact versions that were solved and tested). Installing from the lock file gives you the same environment we use, so you can start an analysis without resolving package conflicts yourself.
 
-New to Pixi? Start with the [GDSC Pixi SOP](https://github.com/Dartmouth-Data-Analytics-Core/GDSC-Pixi-SOP/wiki).
+<img src="https://github.com/Dartmouth-Data-Analytics-Core/DAC-RNAseq-pipeline/blob/master/img/cqb_logo.jpg" alt="CQB Logo" width="200" align="right"/>
+
+
+>[!TIP]
+> **New to Pixi?** -- We highly suggest reviewing our [Pixi Wiki](https://github.com/Dartmouth-Data-Analytics-Core/GDSC-Pixi-SOP/wiki)
+
 
 ## Workspaces
 
