@@ -19,6 +19,7 @@ Prebuilt [Pixi](https://pixi.sh) workspaces for common genomics and single-cell 
 | [MELD](MELD) | Python | linux-64 | Condition-associated likelihoods with MELD and PHATE |
 | [SpatialData](SpatialData) | Python | osx-arm64, linux-64 | Spatial transcriptomics with SpatialData, Squidpy, and Tangram |
 | [Bulk-ATAC-Seq/hg38](Bulk-ATAC-Seq/hg38) | R + CLI | osx-arm64, linux-64 | Downstream bulk ATAC-seq analysis on hg38 |
+| [RNASeq-Downstream](RNASeq-Downstream) | R | osx-arm64 (local only) | Downstream bulk RNA-seq: RGenEDA, DESeq2, shrinkage, func. enrichment, plotting |
 
 A workspace only installs on the platforms listed in its `pixi.toml`. These environments can be easily modified and installed on your system / lab volume / personal cluster account. 
 
@@ -63,6 +64,7 @@ Some R packages are not on conda, so they are installed from GitHub with a Pixi 
 | Seurat_v5 | `pixi run install-monocle3` | Monocle3 |
 | Seurat_v5 | `pixi run install-scplotter` | scplotter |
 | Bulk-ATAC-Seq/hg38 | `pixi run install-git` | ComplexHeatmap, RGenEDA |
+| RNASeq-Downstream | `pixi run install-rgeneda` | RGenEDA |
 
 GitHub installs are not recorded in `pixi.lock`. They install the current version of each package at the time you run the task.
 
@@ -130,6 +132,23 @@ R environment for downstream bulk ATAC-seq analysis. It currently supports hg38 
 - deepTools for coverage tracks and heatmaps
 - From GitHub (post-install task): ComplexHeatmap, RGenEDA
 
+### RNASeq-Downstream
+
+> [!IMPORTANT]
+> This workspace is for your **LOCAL** machine (Apple silicon Mac) only. Do **NOT** install it on the cluster or on a cluster volume that is mounted on your Mac. If you run `pixi install` on a mounted volume, Pixi writes a macOS environment into the shared folder, and this can break the cluster environments in that folder. Copy `pixi.toml` and `pixi.lock` to a folder on your local disk, and install there.
+
+R environment for downstream bulk RNA-seq analysis, for use in Positron or RStudio.
+
+- Differential expression: DESeq2, apeglm (`lfcShrink(type = "apeglm")`)
+- Enrichment: clusterProfiler, org.Hs.eg.db, org.Mm.eg.db, org.Dr.eg.db
+- Plotting: ggplot2, ggrepel, ggpubr, pheatmap, ComplexHeatmap, dittoSeq, RColorBrewer, patchwork
+- Data handling: dplyr, tidyr, SummarizedExperiment
+- From GitHub (post-install task): RGenEDA
+
+All RGenEDA dependencies come from conda. The `install-rgeneda` task installs only RGenEDA and does not get or upgrade other packages from CRAN. `pixi run check` installs RGenEDA, loads the main packages, and prints `sessionInfo()`.
+
+To use the environment in Positron, select the R interpreter at `.pixi/envs/default/bin/R` in the workspace folder.
+
 ## Running on Discovery
 
 - **Home directory quota.** Environments and the Pixi package cache can be several GB. Install workspaces on lab storage (for example under `/dartfs-hpc/rc/lab/...`), not in your home directory. Move the package cache out of your home directory too:
@@ -140,7 +159,7 @@ R environment for downstream bulk ATAC-seq analysis. It currently supports hg38 
 
   Add this line to your `~/.bashrc` so it applies to every session.
 
-- **Platforms.** Discovery is `linux-64`. Seurat_v5 is currently built for `osx-arm64` only, so it will not install on Discovery.
+- **Platforms.** Discovery is `linux-64`. Seurat_v5 and RNASeq-Downstream are built for `osx-arm64` only, so they will not install on Discovery. RNASeq-Downstream is for local use only.
 
 ## Troubleshooting
 
