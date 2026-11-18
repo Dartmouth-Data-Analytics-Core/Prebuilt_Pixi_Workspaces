@@ -5,6 +5,14 @@ R environment for downstream bulk RNA-seq analysis: exploratory data analysis, d
 > [!IMPORTANT]
 > This environment is for your **LOCAL** machine (Apple silicon Mac, `osx-arm64`) only. Do **NOT** install it on the cluster or on a cluster volume that is mounted on your Mac. Pixi installs the environment next to `pixi.toml`, so an install on a mounted volume writes macOS files into cluster storage. Keep this folder on your local disk.
 
+## Quick Start
+
+From a local folder:
+
+```
+pixi install && pixi run install-rgeneda 
+```
+
 ## Setup
 
 1. Copy `pixi.toml` and `pixi.lock` to a folder on your local disk.
