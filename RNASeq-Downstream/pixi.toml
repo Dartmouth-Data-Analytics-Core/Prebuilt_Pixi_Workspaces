@@ -18,7 +18,7 @@ bioconductor-clusterprofiler = "*"
 "bioconductor-org.dr.eg.db" = "*"
 bioconductor-dittoseq = "*"
 bioconductor-complexheatmap = "*"
-bioconductor-summarizedexperiment = "*"   # RGenEDA import
+bioconductor-summarizedexperiment = "*"   
 
 # CRAN
 r-ggplot2 = ">=3.4.0"
@@ -28,11 +28,11 @@ r-dplyr = "*"
 r-tidyr = "*"
 r-rcolorbrewer = "*"
 r-pheatmap = "*"
-r-patchwork = "*"   # RGenEDA import
-r-scales = "*"      # RGenEDA import
-r-vegan = "*"       # RGenEDA import
-r-cli = "*"         # RGenEDA import
-r-remotes = "*"     # used by install-rgeneda task
+r-patchwork = "*"   
+r-scales = "*"      
+r-vegan = "*"       
+r-cli = "*"         
+r-remotes = "*"     
 
 [tasks.install-rgeneda]
 # All RGenEDA Imports come from conda above, so remotes must not pull or
