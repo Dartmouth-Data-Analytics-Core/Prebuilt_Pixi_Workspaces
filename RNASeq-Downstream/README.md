@@ -13,6 +13,8 @@ From a local folder:
 pixi install && pixi run install-rgeneda 
 ```
 
+Assuming you have a project folder ready to go and mounted on your local machine from Discovery, add a new pixi task to point either positron or RStudio to that mounted folder (see more below).
+
 ## Setup
 
 1. Copy `pixi.toml` and `pixi.lock` to a folder on your local disk.
