@@ -1,0 +1,44 @@
+# Local (Mac, Apple silicon) R environment for bulk RNA-seq DE + enrichment.
+# Do NOT copy this onto a mounted cluster volume and install it there.
+
+[workspace]
+name = "rnaseq-env"
+channels = ["conda-forge", "bioconda"]
+platforms = ["osx-arm64"]
+
+[dependencies]
+r-base = ">=4.4"
+
+# Bioconductor
+bioconductor-deseq2 = "*"
+bioconductor-apeglm = "*"
+bioconductor-clusterprofiler = "*"
+"bioconductor-org.hs.eg.db" = "*"
+"bioconductor-org.mm.eg.db" = "*"
+"bioconductor-org.dr.eg.db" = "*"
+bioconductor-dittoseq = "*"
+bioconductor-complexheatmap = "*"
+bioconductor-summarizedexperiment = "*"   # RGenEDA import
+
+# CRAN
+r-ggplot2 = ">=3.4.0"
+r-ggrepel = "*"
+r-ggpubr = "*"
+r-dplyr = "*"
+r-tidyr = "*"
+r-rcolorbrewer = "*"
+r-pheatmap = "*"
+r-patchwork = "*"   # RGenEDA import
+r-scales = "*"      # RGenEDA import
+r-vegan = "*"       # RGenEDA import
+r-cli = "*"         # RGenEDA import
+r-remotes = "*"     # used by install-rgeneda task
+
+[tasks.install-rgeneda]
+# All RGenEDA Imports come from conda above, so remotes must not pull or
+# upgrade anything from CRAN. Change the ref to pin a release or branch.
+cmd = "Rscript -e 'remotes::install_github(\"mikemartinez99/RGenEDA\", ref = \"HEAD\", dependencies = FALSE, upgrade = \"never\")'"
+
+[tasks.check]
+cmd = "Rscript -e 'suppressPackageStartupMessages({library(DESeq2); library(clusterProfiler); library(org.Hs.eg.db); library(org.Mm.eg.db); library(org.Dr.eg.db); library(dittoSeq); library(ComplexHeatmap); library(RGenEDA)}); sessionInfo()'"
+depends-on = ["install-rgeneda"]
