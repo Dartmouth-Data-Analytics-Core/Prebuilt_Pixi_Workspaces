@@ -37,7 +37,7 @@ r-remotes = "*"     # used by install-rgeneda task
 [tasks.install-rgeneda]
 # All RGenEDA Imports come from conda above, so remotes must not pull or
 # upgrade anything from CRAN. Change the ref to pin a release or branch.
-cmd = "Rscript -e 'remotes::install_github(\"mikemartinez99/RGenEDA\", ref = \"HEAD\", dependencies = TRUE, upgrade = \"never\")'"
+cmd = "Rscript -e 'remotes::install_github(\"mikemartinez99/RGenEDA\", ref = \"HEAD\", dependencies = FALSE, upgrade = \"never\")'"
 
 [tasks.check]
 cmd = "Rscript -e 'suppressPackageStartupMessages({library(DESeq2); library(clusterProfiler); library(org.Hs.eg.db); library(org.Mm.eg.db); library(org.Dr.eg.db); library(dittoSeq); library(ComplexHeatmap); library(RGenEDA)}); sessionInfo()'"
